@@ -12,7 +12,7 @@ var burger = {
             cb(res);
         });
     },
-    updateOne: function(column, value, valueID, cb){
+    updateOne: function(column, value, valueId, cb){
         orm.updateOne("burgers", column, value, valueId, function(res){
             cb(res);
         });
