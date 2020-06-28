@@ -1,9 +1,9 @@
 $(function(){
-    $(".create-form").on("submit", function(event){
+    $(".form-group").on("submit", function(event){
         event.preventDefault();
 
         var newBurger = {
-            burger_name: $("#newburger").val().trim(),
+            burger: $("#newBurger").val().trim(),
             devoured: 0
         };
 
@@ -44,7 +44,7 @@ $(function(){
             type: "DELETE",
             url: "/api/burgers/" + id
         }).then(function(){
-            console.log("you threw away the hamburger")
+            console.log("you deleted the hamburger")
             location.reload();
         });
     });

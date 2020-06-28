@@ -11,7 +11,7 @@ function createQs(num){
     return arr.toString();
 }
 
-function translateSql(obj){
+function translateSql(ob){
     var arr = [];
     for (var key in ob){
         var value = ob[key];
@@ -54,9 +54,9 @@ var orm = {
             })
     },
         deleteOne: function(table, condition, cb){
-            var quesryString = "DELETE FROM " + table + " WHERE " + condition;
+            var queryString = "DELETE FROM " + table + " WHERE " + condition;
             console.log(queryString);
-            connection.query(quesryString, function(err,result){
+            connection.query(queryString, function(err,result){
                 if (err) throw err;
                 cb(result)
             });
