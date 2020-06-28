@@ -1,5 +1,6 @@
 //DEPENDENCIES
 var express = require("express");
+var exphbs = require("express-handlebars");
 
 //CREATE APP
 var app = express();
@@ -14,15 +15,12 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Set Handlebars.
-var exphbs = require("express-handlebars");
-
+//Set up handlebars template engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
 var routes = require("./controllers/burger_controller.js");
-
 app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
