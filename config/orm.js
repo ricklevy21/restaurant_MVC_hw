@@ -1,6 +1,30 @@
 //import database connection
 var connection = require("./connection.js")
 
+
+//helper functions
+function createQs(num){
+    var arr = [];
+    for (var i = 0; i < num; i++){
+        arr.push("?");
+    }
+    return arr.toString();
+}
+
+function translateSql(obj){
+    var arr = [];
+    for (var key in ob){
+        var value = ob[key];
+        if (Object.hasOwnProperty.call(ob, key)){
+            if(typeof value === "string" && value.indexOf(" ") >= 0 ){
+                value = "'" + value + "'" ;
+            }
+            arr.push(key + "=" + value)
+        }
+    }
+    return arr.toString();
+}
+
 //Object Relational Mapper  ?? = columns & tables  ? = values
 //Create an object called ORM that has CRUD methods for interacting with database
 var orm = {
