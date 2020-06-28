@@ -1,7 +1,6 @@
 //dependencies
 var express = require("express");
 
-
 //methods to utilize
 var router = express.Router();
 
@@ -25,7 +24,7 @@ router.get("/", function(req,res){
 
 //route to add a burger
 router.post("/api/burgers", function(req,res){
-    burger.insertOne(["burger"],[req.body.burger],function(result){
+    burger.insertOne(["burger_name", "devoured"],[req.body.burger_name, req.body.devoured],function(result){
         //send back the ID of the new burger
         res.json({ id: result.insertId });
     });
@@ -40,6 +39,21 @@ router.put("/api/burgers/:id", function(req, res){
     burger.updateOne({
         devoured: req.body.devoured
     }, condition, function(result){
+        if (result.changedRows == 0){
+            //if no rows were changed, then the ID must not exist, so send 404
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
+
+//route to delete a burger
+router.deleteOne(condition, function(req,res){
+    var condition = "id" + req.params.id;
+    console.log("condition: "+ condition);
+
+    burger.deleteOne(condition, function(result){
         if (result.changedRows == 0){
             //if no rows were changed, then the ID must not exist, so send 404
             return res.status(404).end();

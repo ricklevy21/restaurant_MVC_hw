@@ -53,7 +53,6 @@ var orm = {
                 cb(result)
             })
     },
-    {
         deleteOne: function(table, condition, cb){
             var quesryString = "DELETE FROM " + table + " WHERE " + condition;
             console.log(queryString);
@@ -61,8 +60,7 @@ var orm = {
                 if (err) throw err;
                 cb(result)
             });
-        };
-    }
+        }
 }
 
 module.exports = orm;
