@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/ricklevy21/restaurant_MVC_hw#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-handlebars": "^4.0.4",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4"
